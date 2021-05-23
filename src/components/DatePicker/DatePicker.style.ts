@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SelectContainer = styled.select`
+export const DatePickerContainer = styled.input`
   height: 48px;
   width: 252px;
   padding: 0 16px;
@@ -9,5 +9,3 @@ export const SelectContainer = styled.select`
   border: 2px solid rgba(128, 131, 164, 0.2);
   color: #2c2d76;
 `;
-
-export const SelectOption = styled.option``;
