@@ -1,6 +1,12 @@
 import React from "react";
 import { DatePickerContainer } from "./DatePicker.style";
 
-const DatePicker: React.FC = () => <DatePickerContainer type="date"></DatePickerContainer>;
+type TProps = {
+  onChange: (e: any) => void;
+};
+
+const DatePicker: React.FC<TProps> = ({ onChange }) => (
+  <DatePickerContainer type="date" onChange={(e) => onChange(e.target.value)} />
+);
 
 export default DatePicker;
