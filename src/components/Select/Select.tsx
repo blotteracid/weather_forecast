@@ -1,17 +1,21 @@
 import React from "react";
 import { SelectContainer, SelectOption } from "./Select.style";
 
-const Selector: React.FC = () => {
+type TProps = {
+  onChange: (city: string) => void;
+};
+
+const Selector: React.FC<TProps> = ({ onChange }) => {
   return (
-    <SelectContainer name="city" id="city-select">
-      <SelectOption value="" disabled selected>
+    <SelectContainer name="city" defaultValue="" id="city-select" onChange={(e) => onChange(e.target.value)}>
+      <SelectOption value="" disabled>
         Select city
       </SelectOption>
-      <SelectOption value="Samara">Samara</SelectOption>
-      <SelectOption value="Tlt">Tlt</SelectOption>
-      <SelectOption value="Saratov">Saratov</SelectOption>
-      <SelectOption value="Kazan">Kazan</SelectOption>
-      <SelectOption value="Krasnodar">Krasnodar</SelectOption>
+      <SelectOption value="53.195873, 50.100193">Samara</SelectOption>
+      <SelectOption value="53.507836, 49.420393">Tolyatti</SelectOption>
+      <SelectOption value="51.533557, 46.034257">Saratov</SelectOption>
+      <SelectOption value="55.796127, 49.106405">Kazan</SelectOption>
+      <SelectOption value="45.035470, 38.975313">Krasnodar</SelectOption>
     </SelectContainer>
   );
 };
