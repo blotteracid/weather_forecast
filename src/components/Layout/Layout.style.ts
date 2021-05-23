@@ -4,6 +4,7 @@ import background from "./background.png";
 export const LayoutContainer = styled.div`
   height: 100%;
   width: 100%;
+  overflow-y: auto;
   background-image: url(${background});
   background-size: cover;
   background-color: #373af5;
@@ -22,6 +23,6 @@ export const LayoutLogo = styled.img`
 
 export const Content = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
