@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { COLORS } from "../../constants/Colors";
 
 export const EmptyPlaceholderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 10px;
 `;
 
 export const EmptyPlaceholderIcon = styled.img`
@@ -17,5 +17,7 @@ export const EmptyPlaceholderIcon = styled.img`
 export const EmptyPlaceholderText = styled.p`
   font-size: 16px;
   line-height: 24px;
-  color: #8083a4;
+  font-weight: bold;
+  color: ${COLORS.grey};
+  text-align: center;
 `;

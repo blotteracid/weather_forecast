@@ -1,19 +1,28 @@
 import styled from "styled-components";
+import { COLORS } from "../../constants/Colors";
 
 export const CardContainer = styled.div`
   width: 660px;
   height: 524px;
-  background-color: #ffffff;
-  margin: 0 17px 0;
+  background-color: ${COLORS.white};
+  margin: 0 17px 34px;
   padding: 50px 58px 50px;
   border-radius: 8px;
+
+  @media screen and (max-width: 450px) {
+    width: 300px;
+    min-height: 464px;
+    height: auto;
+    padding: 32px 24px 64px;
+  }
 `;
 
 export const CardTitle = styled.h3`
   font-weight: bold;
   font-size: 32px;
-  color: #2c2d76;
+  color: ${COLORS.darkBlue};
   margin-bottom: 32px;
+  line-height: 32px;
 `;
 
 export const CardSelectors = styled.div`
