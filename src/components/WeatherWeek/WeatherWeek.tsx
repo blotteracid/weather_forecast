@@ -4,7 +4,12 @@ import Select from "../Select";
 import EmptyPlaceholder from "../EmptyPlaceholder";
 import WeatherCard from "../WeatherCard";
 import { BREAKPOINTS } from "../../constants/Breakpoints";
-import { WeatherCardsWrapper, WeatherCardsArrowWrapper, WeatherCardGrid } from "./WeatherWeek.style";
+import {
+  WeatherCardsWrapper,
+  WeatherCardsArrowWrapper,
+  WeatherCardGrid,
+  WeatherWeekActions,
+} from "./WeatherWeek.style";
 import { ReactComponent as WeatherCardsArrowLeft } from "./chevron.svg";
 
 const STEP = 3;
@@ -43,15 +48,15 @@ const WeatherWeek: React.FC = () => {
     }
   };
 
-  const handleChange = (city: string) => {
-    setCity(city);
-  };
+  const handleChange = (city: string) => setCity(city);
 
   let weatherArr = screenWidth <= BREAKPOINTS.mobile ? weather : weather.slice(step, STEP + step);
 
   return (
     <Card title="7 Days Forecast">
-      <Select onChange={handleChange} />
+      <WeatherWeekActions>
+        <Select onChange={handleChange} />
+      </WeatherWeekActions>
       {weather.length ? (
         <WeatherCardsWrapper>
           <WeatherCardsArrowWrapper disabled={!moreLeft} sideLeft={true}>

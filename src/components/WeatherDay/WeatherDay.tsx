@@ -8,7 +8,7 @@ import { WeatherDaySelectWrapper } from "./WeatherDay.style";
 
 const WeatherDay: React.FC = () => {
   const [city, setCity] = useState<string | null>(null);
-  const [time, setTime] = useState<any | null>(null);
+  const [time, setTime] = useState<number | null>(null);
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
@@ -25,14 +25,13 @@ const WeatherDay: React.FC = () => {
     }
   }, [city, time]);
 
-  const handleChangeDate = (time: any) => {
-    const timestamp = new Date(time.split("-").join(".")).getTime() / 1000;
+  const handleChangeDate = (time: string) => {
+    const timestamp = new Date(time.split("-").join(".")).getTime() / 1000; // Convert milliseconds into unix timestamp
+
     setTime(timestamp);
   };
 
-  const handleChange = (city: string) => {
-    setCity(city);
-  };
+  const handleChange = (city: string) => setCity(city);
 
   return (
     <Card title="Forecast for a Date in the Past">

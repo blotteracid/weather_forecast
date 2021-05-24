@@ -29,7 +29,6 @@ export const LayoutLogo = styled.img`
 
   @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
     width: 243px;
-    margin: 32px auto 24px;
   }
 `;
 

@@ -9,7 +9,7 @@ export const WeatherCardsWrapper = styled.div`
   margin-top: 30px;
 
   @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
-    margin: 30px -20px 0;
+    margin: 0 -20px;
   }
 `;
 
@@ -21,6 +21,7 @@ export const WeatherCardsArrowWrapper = styled.div<{ sideLeft?: boolean; disable
   transform: ${(props) => (props.sideLeft ? "none˝" : "rotate(180deg)")};
   svg > path {
     stroke: ${(props) => (props.disabled ? "rgba(128, 131, 164, 0.4)" : "rgba(128, 131, 164, 1)")};
+    fill: ${(props) => (props.disabled ? "rgba(128, 131, 164, 0.4)" : "rgba(128, 131, 164, 1)")};
   }
 
   @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
@@ -39,5 +40,13 @@ export const WeatherCardGrid = styled.div`
     flex-wrap: nowrap;
     padding: 0 20px 30px;
     overflow-x: auto;
+  }
+`;
+
+export const WeatherWeekActions = styled.div`
+  margin-bottom: 30px;
+
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
+    margin-bottom: 0;
   }
 `;

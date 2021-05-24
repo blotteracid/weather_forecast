@@ -16,6 +16,7 @@ export const CardContainer = styled.div`
     height: auto;
     padding: 32px 24px 64px;
     overflow-x: hidden;
+    margin-bottom: 10px;
   }
 
 `;
