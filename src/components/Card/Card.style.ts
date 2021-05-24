@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { COLORS } from "../../constants/Colors";
+import { BREAKPOINTS } from "../../constants/Breakpoints";
 
 export const CardContainer = styled.div`
   width: 660px;
@@ -9,12 +10,14 @@ export const CardContainer = styled.div`
   padding: 50px 58px 50px;
   border-radius: 8px;
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
     width: 300px;
     min-height: 464px;
     height: auto;
     padding: 32px 24px 64px;
+    overflow-x: hidden;
   }
+
 `;
 
 export const CardTitle = styled.h3`

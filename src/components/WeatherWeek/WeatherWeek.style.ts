@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BREAKPOINTS } from "../../constants/Breakpoints";
 
 export const WeatherCardsWrapper = styled.div`
   display: flex;
@@ -6,26 +7,24 @@ export const WeatherCardsWrapper = styled.div`
   align-items: center;
   position: relative;
   margin-top: 30px;
-`;
 
-export const WeatherCardsArrowLeftWrapper = styled.div<{ disabled?: boolean }>`
-  position: absolute;
-  top: 50%;
-  left: -28px;
-
-  svg > path {
-    stroke: ${(props) => (props.disabled ? "rgba(128, 131, 164, 0.4)" : "rgba(128, 131, 164, 1)")};
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
+    margin: 30px -20px 0;
   }
 `;
 
-export const WeatherCardsArrowRightWrapper = styled.div<{ disabled?: boolean }>`
+export const WeatherCardsArrowWrapper = styled.div<{ sideLeft?: boolean; disabled?: boolean }>`
   position: absolute;
   top: 50%;
-  right: -28px;
-  transform: rotate(180deg);
-  
+  left: ${(props) => (props.sideLeft ? "-28px" : "auto")};
+  right: ${(props) => (props.sideLeft ? "auto" : "-28px")};
+  transform: ${(props) => (props.sideLeft ? "none˝" : "rotate(180deg)")};
   svg > path {
     stroke: ${(props) => (props.disabled ? "rgba(128, 131, 164, 0.4)" : "rgba(128, 131, 164, 1)")};
+  }
+
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
+    display: none;
   }
 `;
 
@@ -34,4 +33,11 @@ export const WeatherCardGrid = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
   width: 100%;
+
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0 20px 30px;
+    overflow-x: auto;
+  }
 `;

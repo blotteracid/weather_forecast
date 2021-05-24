@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { COLORS } from "../../constants/Colors";
+import { BREAKPOINTS } from "../../constants/Breakpoints";
 import background from "./background.png";
 
 export const LayoutContainer = styled.div`
@@ -7,7 +9,7 @@ export const LayoutContainer = styled.div`
   overflow-y: auto;
   background-image: url(${background});
   background-size: cover;
-  background-color: #373af5;
+  background-color: ${COLORS.blue};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,13 +18,27 @@ export const LayoutContainer = styled.div`
 
 export const LayoutLogo = styled.img`
   width: 775px;
-  height: 212px;
+  height: auto;
   object-fit: contain;
   margin: 65px auto 60px;
+
+  @media screen and (max-width: ${BREAKPOINTS.tablet}px) {
+    width: 420px;
+    margin: 32px auto 24px;
+  }
+
+  @media screen and (max-width: ${BREAKPOINTS.mobile}px) {
+    width: 243px;
+    margin: 32px auto 24px;
+  }
 `;
 
 export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: ${BREAKPOINTS.smallDesktop}px) {
+    flex-direction: column;
+  }
 `;

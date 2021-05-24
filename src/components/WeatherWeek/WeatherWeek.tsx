@@ -3,12 +3,8 @@ import Card from "../Card";
 import Select from "../Select";
 import EmptyPlaceholder from "../EmptyPlaceholder";
 import WeatherCard from "../WeatherCard";
-import {
-  WeatherCardsWrapper,
-  WeatherCardsArrowLeftWrapper,
-  WeatherCardsArrowRightWrapper,
-  WeatherCardGrid,
-} from "./WeatherWeek.style";
+import { BREAKPOINTS } from "../../constants/Breakpoints";
+import { WeatherCardsWrapper, WeatherCardsArrowWrapper, WeatherCardGrid } from "./WeatherWeek.style";
 import { ReactComponent as WeatherCardsArrowLeft } from "./chevron.svg";
 
 const STEP = 3;
@@ -19,6 +15,7 @@ const WeatherWeek: React.FC = () => {
   const [step, setStep] = useState(0);
   const moreLeft = step >= 1;
   const moreRight = step + STEP < weather.length;
+  const screenWidth = window.screen.width;
 
   useEffect(() => {
     if (city) {
@@ -50,22 +47,24 @@ const WeatherWeek: React.FC = () => {
     setCity(city);
   };
 
+  let weatherArr = screenWidth <= BREAKPOINTS.mobile ? weather : weather.slice(step, STEP + step);
+
   return (
     <Card title="7 Days Forecast">
       <Select onChange={handleChange} />
       {weather.length ? (
         <WeatherCardsWrapper>
-          <WeatherCardsArrowLeftWrapper disabled={!moreLeft}>
+          <WeatherCardsArrowWrapper disabled={!moreLeft} sideLeft={true}>
             <WeatherCardsArrowLeft onClick={handleClickLeft} />
-          </WeatherCardsArrowLeftWrapper>
+          </WeatherCardsArrowWrapper>
           <WeatherCardGrid>
-            {weather.slice(step, STEP + step).map((data) => (
+            {weatherArr.map((data) => (
               <WeatherCard isWeek={true} data={data} />
             ))}
           </WeatherCardGrid>
-          <WeatherCardsArrowRightWrapper disabled={!moreRight}>
+          <WeatherCardsArrowWrapper disabled={!moreRight}>
             <WeatherCardsArrowLeft onClick={handleClickRight} />
-          </WeatherCardsArrowRightWrapper>
+          </WeatherCardsArrowWrapper>
         </WeatherCardsWrapper>
       ) : (
         <EmptyPlaceholder />
