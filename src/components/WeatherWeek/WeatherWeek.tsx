@@ -3,11 +3,22 @@ import Card from "../Card";
 import Select from "../Select";
 import EmptyPlaceholder from "../EmptyPlaceholder";
 import WeatherCard from "../WeatherCard";
-import { CardWeatherCardWrapper } from "./WeatherWeek.style";
+import {
+  WeatherCardsWrapper,
+  WeatherCardsArrowLeftWrapper,
+  WeatherCardsArrowRightWrapper,
+  WeatherCardGrid,
+} from "./WeatherWeek.style";
+import { ReactComponent as WeatherCardsArrowLeft } from "./chevron.svg";
+
+const STEP = 3;
 
 const WeatherWeek: React.FC = () => {
   const [city, setCity] = useState<string | null>(null);
   const [weather, setWeather] = useState([]);
+  const [step, setStep] = useState(0);
+  const moreLeft = step >= 1;
+  const moreRight = step + STEP < weather.length;
 
   useEffect(() => {
     if (city) {
@@ -23,7 +34,17 @@ const WeatherWeek: React.FC = () => {
     }
   }, [city]);
 
+  const handleClickLeft = () => {
+    if (moreLeft) {
+      setStep(step - 1);
+    }
+  };
 
+  const handleClickRight = () => {
+    if (moreRight) {
+      setStep(step + 1);
+    }
+  };
 
   const handleChange = (city: string) => {
     setCity(city);
@@ -33,11 +54,19 @@ const WeatherWeek: React.FC = () => {
     <Card title="7 Days Forecast">
       <Select onChange={handleChange} />
       {weather.length ? (
-        <CardWeatherCardWrapper>
-          {weather.map((data) => (
-            <WeatherCard isWeek={true} data={data} />
-          ))}
-        </CardWeatherCardWrapper>
+        <WeatherCardsWrapper>
+          <WeatherCardsArrowLeftWrapper disabled={!moreLeft}>
+            <WeatherCardsArrowLeft onClick={handleClickLeft} />
+          </WeatherCardsArrowLeftWrapper>
+          <WeatherCardGrid>
+            {weather.slice(step, STEP + step).map((data) => (
+              <WeatherCard isWeek={true} data={data} />
+            ))}
+          </WeatherCardGrid>
+          <WeatherCardsArrowRightWrapper disabled={!moreRight}>
+            <WeatherCardsArrowLeft onClick={handleClickRight} />
+          </WeatherCardsArrowRightWrapper>
+        </WeatherCardsWrapper>
       ) : (
         <EmptyPlaceholder />
       )}
