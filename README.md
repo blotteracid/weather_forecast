@@ -1,46 +1,11 @@
-# Getting Started with Create React App
+## почему сделали так, а не иначе
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    1) я использовала styled components, потому что считаю их удобными, а еще они решают проблему уникальности классов (одна из проблем, которую решает БЭМ);
 
-## Available Scripts
+    2) я не использовала в проекте никаких state managers т.к. считаю их избыточными, потому что в данном заданиии достаточно локального state;
 
-In the project directory, you can run:
+## в каком моменте сомневаетесь, что не успели сделать из-за ограничения по времени и любую другую дополнительную информацию
 
-### `yarn start`
+    можно было архитектурно по-другому разбитиь на компоненты и взаимодействия между props, больше типизировать, так же не успела стилизовать select и input type=date и использовала стандартные (можно было бы использовать Select2 и DatePicker), еще можно было бы использовать экземпляр Axios для общения с API, но т.к. используется один запрос не стала этого делать и использовала fetch.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+    p.s: делалось все в торопях из-за отстутсвия свободного времени, понимаю, что и как можно было бы сделать лучше
